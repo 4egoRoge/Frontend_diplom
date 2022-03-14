@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, useColorModeValue,} from '@chakra-ui/react';
+import {Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, useColorModeValue} from '@chakra-ui/react';
 
 function getStorageValue(key, defaultValue) {
     // getting stored value
