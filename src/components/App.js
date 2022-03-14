@@ -1,14 +1,17 @@
-import React, { Component } from "react";
-import '../styles/App.scss';
+import React from "react";
+import {Route, Router} from "react-router";
+import LoginPage from "./Login/LoginPage";
+import {createHashHistory} from "history";
 
-class App extends Component {
-    render() {
-        return (
+const App = () => {
+    return (
+        <>
             <div>
-                <h1>First component</h1>
+
+                        <LoginPage />
             </div>
-        );
-    }
-}
+        </>
+            );
+        }
 
 export default App;
