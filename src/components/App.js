@@ -1,17 +1,24 @@
 import React from "react";
-import {Route, Router} from "react-router";
+import {Route, HashRouter as Router, Routes} from "react-router-dom";
 import LoginPage from "./Login/LoginPage";
 import {createHashHistory} from "history";
 import { ChakraProvider } from '@chakra-ui/react'
+import {Provider, RootStore} from "storePath/RootStore";
+
 
 const App = () => {
+    const history = createHashHistory();
     return (
         <>
-            <div>
                 <ChakraProvider>
-                        <LoginPage />
+                    <Provider value={RootStore}>
+                        <Router history={history}>
+                            <Routes>
+                                <Route path="/auth" element={<LoginPage />}/>
+                            </Routes>
+                        </Router>
+                    </Provider>
                 </ChakraProvider>
-            </div>
         </>
             );
         }

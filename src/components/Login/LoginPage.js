@@ -1,31 +1,38 @@
 import React, {useState, useEffect} from "react";
 import {Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, useColorModeValue} from '@chakra-ui/react';
+import {observer} from "mobx-react-lite";
+import {UseMST} from "storePath/RootStore";
 
 function getStorageValue(key, defaultValue) {
-    // getting stored value
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
     return initial || defaultValue;
 }
 
-export const useLocalStorage = (key, defaultValue) => {
-    const [value, setValue] = useState(() => {
-        return getStorageValue(key, defaultValue);
-    });
+const LoginPage = observer(() => {
+        const useLocalStorage = (key, defaultValue) => {
+            const [value, setValue] = useState(() => {
+                return getStorageValue(key, defaultValue);
+            });
 
-    useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
+            useEffect(() => {
+                localStorage.setItem(key, JSON.stringify(value));
+            }, [key, value]);
 
-    return [value, setValue];
-};
+            return [value, setValue];
+        };
 
-const SimpleCard = () => {
     const [email, setEmail] = useLocalStorage("email", "");
     const [password, setPassword] = useLocalStorage("password", "");
+    const {authStore}=UseMST();
+
+    const accept = (event) => {
+        event.preventDefault()
+        authStore.changeStatus("Мы вошли")
+    }
 
     return (
-        <form>
+        <form onSubmit={accept}>
         <Flex
             minH={'100vh'}
             align={'center'}
@@ -65,6 +72,9 @@ const SimpleCard = () => {
                             }}>
                             Войти
                         </Button>
+                        <div>
+                            {authStore.status}
+                        </div>
                     </Stack>
                 </Box>
             </Stack>
@@ -72,5 +82,6 @@ const SimpleCard = () => {
         </form>
     );
 }
+)
 
-export default SimpleCard;
+export default LoginPage;

@@ -3,6 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    resolve: {
+        alias: {
+            storePath: path.resolve(__dirname,"src/stores")
+        }
+    },
     entry: "./src/index.js",
     output: {
         path: path.join(__dirname, "/dist"),
