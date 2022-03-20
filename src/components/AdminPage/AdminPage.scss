@@ -1,0 +1,38 @@
+body {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'menu   content'
+    'footer footer';
+  grid-template-columns: 12rem 1fr;
+  grid-template-rows: 5rem 1fr 3rem;
+  padding-left: 230px;
+}
+header {
+  grid-area: header;
+}
+
+article {
+  grid-area: content;
+  padding-left: 130px;
+}
+
+aside {
+  grid-area: menu;
+  background: lightblue;
+  div{
+      border: 2px double grey;
+      border-bottom: none;
+  }
+  .last{
+    border-bottom: 2px double grey;
+  }
+}
+
+footer {
+  grid-area: footer;
+}
+
+h1 {
+  text-align: center;
+}
