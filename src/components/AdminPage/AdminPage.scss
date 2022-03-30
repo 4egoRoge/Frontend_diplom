@@ -1,4 +1,4 @@
-body {
+.admin-panel {
   display: grid;
   grid-template-areas:
     'header header'
@@ -7,7 +7,7 @@ body {
   grid-template-columns: 12rem 1fr;
   grid-template-rows: 5rem 1fr 3rem;
   padding-left: 230px;
-}
+
 header {
   grid-area: header;
 }
@@ -35,4 +35,5 @@ footer {
 
 h1 {
   text-align: center;
+   }
 }

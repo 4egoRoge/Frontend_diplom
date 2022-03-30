@@ -13,6 +13,15 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "index-bundle.js"
     },
+    devServer: {
+        hot: true,
+        port: 9001,
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        compress: true,
+        historyApiFallback: true,
+    },
     module: {
         rules: [
             {

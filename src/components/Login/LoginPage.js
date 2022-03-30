@@ -28,7 +28,8 @@ const LoginPage = observer(() => {
 
     const accept = (event) => {
         event.preventDefault()
-        authStore.changeStatus("Мы вошли")
+        authStore.tryLogin(event.target.email.value, event.target.password.value)
+ч
     }
 
     return (
@@ -52,6 +53,7 @@ const LoginPage = observer(() => {
                             <FormLabel>Email адрес</FormLabel>
                             <Input
                                 type='email'
+                                name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -60,6 +62,7 @@ const LoginPage = observer(() => {
                             <FormLabel>Пароль</FormLabel>
                             <Input
                                 type="password"
+                                name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
