@@ -2,35 +2,24 @@ import React, {useState, useEffect} from "react";
 import {Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, useColorModeValue} from '@chakra-ui/react';
 import {observer} from "mobx-react-lite";
 import {UseMST} from "storePath/RootStore";
-
-function getStorageValue(key, defaultValue) {
-    const saved = localStorage.getItem(key);
-    const initial = JSON.parse(saved);
-    return initial || defaultValue;
-}
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = observer(() => {
-        const useLocalStorage = (key, defaultValue) => {
-            const [value, setValue] = useState(() => {
-                return getStorageValue(key, defaultValue);
-            });
 
-            useEffect(() => {
-                localStorage.setItem(key, JSON.stringify(value));
-            }, [key, value]);
-
-            return [value, setValue];
-        };
-
-    const [email, setEmail] = useLocalStorage("email", "");
-    const [password, setPassword] = useLocalStorage("password", "");
     const {authStore}=UseMST();
+    const navigate = useNavigate();
 
     const accept = (event) => {
         event.preventDefault()
         authStore.tryLogin(event.target.email.value, event.target.password.value)
-ч
     }
+
+    useEffect(() => {
+        if(authStore.status === "200") {
+            authStore.changeStatus("")
+            navigate("/admin/*")
+        }
+    },[authStore.status])
 
     return (
         <form onSubmit={accept}>
@@ -54,8 +43,6 @@ const LoginPage = observer(() => {
                             <Input
                                 type='email'
                                 name="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </FormControl>
                         <FormControl isRequired>
@@ -63,8 +50,6 @@ const LoginPage = observer(() => {
                             <Input
                                 type="password"
                                 name="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </FormControl>
                         <Button type="submit"

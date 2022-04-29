@@ -19,10 +19,11 @@ article {
 
 aside {
   grid-area: menu;
-  background: lightblue;
+
   div{
       border: 2px double grey;
       border-bottom: none;
+      background: lightblue;
   }
   .last{
     border-bottom: 2px double grey;
