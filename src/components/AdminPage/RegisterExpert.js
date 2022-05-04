@@ -1,10 +1,9 @@
 import React from "react";
 import { z } from 'zod';
 import { useForm, zodResolver } from '@mantine/form';
-import {NumberInput, TextInput, Button, Box, Group, Text, PasswordInput, Radio, RadioGroup} from '@mantine/core';
+import {TextInput, Button, Box, Group, Text, PasswordInput, Radio, RadioGroup} from '@mantine/core';
 import {observer} from "mobx-react-lite";
 import {UseMST} from "storePath/RootStore";
-import {registerStore} from "storePath/RegisterStore/RegisterStore";
 
 const schema = z.object({
     name: z.string().min(2, { message: 'Имя должно содержать 2 симвода' }),

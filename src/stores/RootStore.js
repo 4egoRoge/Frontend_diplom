@@ -2,10 +2,14 @@ import {types} from "mobx-state-tree";
 import {createContext, useContext} from "react";
 import {authStore} from "./AuthStore/AuthStore";
 import {registerStore} from "storePath/RegisterStore/RegisterStore";
+import {createNewTestStore} from "storePath/CreateNewTestStore/CreateNewTestStore";
+import {listTestStore} from "storePath/ListTestStore/ListTestStore";
 
 const RootStoreModel = types.model("rootStore",{
     authStore: authStore,
-    registerStore: registerStore
+    registerStore: registerStore,
+    createNewTestStore: createNewTestStore,
+    listTestStore: listTestStore
 })
 
 export const RootStore = RootStoreModel.create(
@@ -15,6 +19,13 @@ export const RootStore = RootStoreModel.create(
         },
         registerStore: {
             status: ""
+        },
+        createNewTestStore: {
+            status: ""
+        },
+        listTestStore: {
+            status: "",
+            listTest: []
         }
     }
 )
