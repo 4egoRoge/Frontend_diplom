@@ -6,14 +6,15 @@ import listTest from "../../components/AdminPage/ListTest";
 export const listTestStore = types.model({
     status: types.string,
     listTest: types.array(types.model({
-        id: types.number,
+        id: types.string,
         title: types.string,
-        object: types.string,
+		object: types.frozen(),
         type: types.string
     }))
 }
 ).actions(self => ({
     setListTest(list) {
+		console.log(list)
         self.listTest = list
     },
     getListTest(title,object,type) {
