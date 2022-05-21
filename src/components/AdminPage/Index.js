@@ -15,9 +15,9 @@ const AdminContainer = () => {
                 <div>
                     <Link to="/admin/account">Настройки аккаунта</Link>
                 </div>
-                <div>
+                {/*<div>
                     <Link to="/admin/create-test">Создать новый тест</Link>
-                </div>
+                </div>*/}
                 <div>
                     <Link to="/admin/list-tests">Список доступных тестов</Link>
                 </div>
@@ -35,7 +35,7 @@ const AdminContainer = () => {
                 <Routes>
                     <Route path="" element={<Navigate to="/admin/account" replace={false}/>} />
                     <Route path="account" element={<AdminSettings />} />
-                    <Route path="create-test" element={<CreateNewTest />} />
+                    {/*<Route path="create-test" element={<CreateNewTest />} />*/}
                     <Route path="list-experts" element={<ListExpert />} />
                     <Route path="list-tests" element={<ListTest />} />
                     <Route path="register-expert" element={<RegisterExpert />} />

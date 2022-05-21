@@ -21,7 +21,7 @@ export const listTestStore = types.model({
         axios.post('https://api.future-mission.ru/v1/tasks/getTasks', {
             title: title, object: JSON.stringify(object), type: type
         }).then( response => {
-            console.log("sadsd", response)
+            console.log(response)
             this.setListTest(response.data)
         })
     }

@@ -4,12 +4,16 @@ import {authStore} from "./AuthStore/AuthStore";
 import {registerStore} from "storePath/RegisterStore/RegisterStore";
 import {createNewTestStore} from "storePath/CreateNewTestStore/CreateNewTestStore";
 import {listTestStore} from "storePath/ListTestStore/ListTestStore";
+import {listTestResultStore} from "storePath/ListTestResultStore/ListTestResultStore";
+import {listExpertsStore} from "storePath/ListExpertsStore/ListExpertsStore";
 
 const RootStoreModel = types.model("rootStore",{
     authStore: authStore,
     registerStore: registerStore,
     createNewTestStore: createNewTestStore,
-    listTestStore: listTestStore
+    listTestStore: listTestStore,
+    listTestResultStore: listTestResultStore,
+    listExpertsStore: listExpertsStore
 })
 
 export const RootStore = RootStoreModel.create(
@@ -26,7 +30,15 @@ export const RootStore = RootStoreModel.create(
         listTestStore: {
             status: "",
             listTest: []
-        }
+        },
+        listTestResultStore: {
+            status: "",
+            listTestResult: []
+        },
+        listExpertsStore: {
+            status: "",
+            listExperts: []
+        },
     }
 )
 

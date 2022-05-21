@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;900&display=swap');
+
+body {
+  width: 100%;
+  height: 100%;
+  background: #3C3C3C;
+  img{
+    position: absolute;
+    width: 179px;
+    height: 115.72px;
+    left: 841px;
+    top: 220px;
+  }
+  h1 {
+    position: absolute;
+    width: 348px;
+    height: 58px;
+    left: 786px;
+    top: 368px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 58px;
+
+    color: #FFFFFF;
+
+  }
+
+  .form-login {
+    padding: 0px;
+    gap: 60px;
+
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    left: 610px;
+    top: 475.72px;
+
+    .email-input {
+      position: absolute;
+      width: 700px;
+      height: 60px;
+      left: 0px;
+      top: 0px;
+
+      input[type=text] {
+        background: #979797;
+        border-radius: 5px;
+        width: 700px;
+        height: 60px;
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+      }
+
+      input[type=text]::placeholder {
+        position: absolute;
+        width: 60px;
+        height: 29px;
+        top: 16px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #FFFFFF;
+
+        opacity: 0.6;
+      }
+    }
+
+    .password-input {
+      position: absolute;
+      width: 700px;
+      height: 60px;
+      left: 0px;
+      top: 120px;
+
+      input[type=password] {
+        position: absolute;
+        background: #979797;
+        border-radius: 5px;
+        width: 700px;
+        height: 60px;
+
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+
+      input[type=text] {
+        position: absolute;
+        background: #979797;
+        border-radius: 5px;
+        width: 700px;
+        height: 60px;
+
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+
+      input[type=password]::placeholder {
+        width: 87px;
+        height: 29px;
+        left: 32px;
+        top: 136px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #FFFFFF;
+
+        opacity: 0.6;
+      }
+
+      input[type=text]::placeholder {
+        width: 87px;
+        height: 29px;
+        left: 32px;
+        top: 136px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #FFFFFF;
+
+        opacity: 0.6;
+      }
+    }
+
+    .button-login-form {
+      width: 700px;
+      height: 60px;
+
+      flex: none;
+      order: 2;
+      flex-grow: 0;
+
+      button {
+        position: absolute;
+        width: 700px;
+        height: 60px;
+        left: 0px;
+        top: 240px;
+
+        background: #37CEBF;
+        border-radius: 5px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        text-decoration-color: white;
+      }
+    }
+  }
+}

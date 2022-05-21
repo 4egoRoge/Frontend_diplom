@@ -11,9 +11,9 @@ const schema = z.object({
     password: z.string().min(8,{ message: 'Должен содержать 8 символов' }),
 });
 
-const RegisterExpert = observer(() => {
+    const RegisterExpert = observer(() => {
 
-    const {registerStore}=UseMST();
+    /*const {registerStore}=UseMST();*/
 
         const accept = (event) => {
             event.preventDefault()

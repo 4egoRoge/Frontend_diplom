@@ -26,8 +26,6 @@ const ListTest = observer(() => {
 
     const rows = listTestStore.listTest.map((element) => {
 
-        console.log("easdsad")
-
         return(<tr key={element.id}>
             <td>{element.title}</td>
             <td>{element.title}</td>
