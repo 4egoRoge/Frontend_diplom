@@ -9,6 +9,8 @@ import Home from "./Home/Home";
 import { ModalsProvider } from '@mantine/modals';
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
 import Experts from "./experts/experts";
+import HistoryTests from "./HistoryTests/HistoryTests";
+import Settings from "./Settings/Settings";
 
 const App = () => {
     const history = createHashHistory();
@@ -39,9 +41,11 @@ const App = () => {
                             <Routes>
                                 <Route path="/auth" element={<LoginPage />}/>
                                 <Route path="/admin/*" element={<AdminContainer />}/>
+                                <Route path="/history-tests" element={<HistoryTests />}/>
                                 <Route path="/room" element={<Room />}/>
                                 <Route path="/home" element={<Home />}/>
                                 <Route path="/experts" element={<Experts />}/>
+                                <Route path="/settings" element={<Settings />}/>
                             </Routes>
                         </Router>
                     </Provider>

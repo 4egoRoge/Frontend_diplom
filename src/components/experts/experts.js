@@ -15,10 +15,9 @@ import {
 import {Adjustments, History, Home, Pencil, Plus, Settings, Trash, Users} from "tabler-icons-react";
 import {observer} from "mobx-react-lite";
 import {UseMST} from "storePath/RootStore";
-import {listExpertsStore} from "storePath/ListExpertsStore/ListExpertsStore";
-import RegisterExpert from "../AdminPage/RegisterExpert";
 import {z} from "zod";
 import {useForm, zodResolver} from "@mantine/form";
+import './experts.scss';
 
 const Experts = observer(() => {
 
@@ -76,7 +75,7 @@ const Experts = observer(() => {
                     },
                     title: {
                         color: "#FFFFFF",
-                        marginLeft: "37%",
+                        marginLeft: "43%",
                         fontFamily: 'Inter',
                         fontStyle: 'normal',
                         fontWeight: '400',
@@ -91,57 +90,77 @@ const Experts = observer(() => {
                     header: {
                         backgroundColor: '#37CEBF',
                         width: "100%",
-                        height: "45px",
+                        height: "20%",
                         padding: "0px",
                         margin: "0px"
-                    }
+                    },
                 })}
             >
-                <Box style={{width: "75%", marginLeft: '13%'}}>
-                    <form onSubmit={form.onSubmit=(accept)}
-                          styles={(theme) => ({
-                              textInput: {
-                                  backgroundColor: "#979797"
-                              }
-                          })}>
+                <Box style={{
+                    width: "75%",
+                    marginLeft: '13%',
+                    }}>
+                    <form onSubmit={form.onSubmit=(accept)} className = 'input-register-expert' >
                         <TextInput
-                            classname = 'input-register-expert'
                             required
-                            placeholder="Иван"
+                            size="lg"
+                            placeholder="Имя"
                             mt="sm"
                             name="name"
                             {...form.getInputProps('name')}
+                            style={{marginTop: "3%",marginBottom: "3%"}}
                         />
                         <TextInput
                             required
-                            placeholder="Иванов"
+                            size="lg"
+                            placeholder="Фамилия"
                             mt="sm"
                             name="surname"
                             {...form.getInputProps('surname')}
+                            style={{marginBottom: "3%"}}
                         />
                         <RadioGroup
                             spacing="xs"
                             required
                             name="gender"
                             {...form.getInputProps('gender')}
+                            style={{marginBottom: "3%"}}
+                            styles={(theme) => ({
+                                label: {
+                                    fontFamily: 'Inter',
+                                    fontStyle: 'normal',
+                                    fontWeight: '400',
+                                    fontSize: '24px',
+                                    lineHeight: '29px',
+                                    color: '#FFFFFF'}
+                            })}
                         >
-                            <Radio value="1" label="Мужской" />
-                            <Radio value="2" label="Женский" />
+                            <Radio value="1" label="М" />
+                            <Radio value="2" label="Ж" />
                         </RadioGroup>
                         <TextInput
                             required
+                            size="lg"
                             name="email"
                             placeholder="example@mail.com"
-                            {...form.getInputProps('email')}
+                            {...form.getInputProps('Email')}
+                            style={{marginBottom: "3%"}}
                         />
                         <PasswordInput
+                            size="lg"
                             required
                             placeholder="Пароль"
                             name="password"
                             {...form.getInputProps('password')}
+                            style={{marginBottom: "3%"}}
                         />
                         <Group position="center" mt="xl">
-                            <Button type="submit">Зарегестрироваться</Button>
+                            <Button size="lg" style={{width: "100%", background: '#37CEBF',fontFamily: 'Inter',
+                                fontStyle: 'normal',
+                                fontWeight: '400',
+                                fontSize: '32px',
+                                lineHeight: '39px',
+                                color: '#FFFFFF'}} type="submit">Добавить</Button>
                         </Group>
                     </form>
                 </Box>
@@ -149,23 +168,23 @@ const Experts = observer(() => {
         <Group position="center" spacing="xl" style={{
             marginTop: "2%"
         }}>
-            <ActionIcon>
+            <ActionIcon component="a" href="#/home" size={80}>
                 <Home size={48} color={'white'}/>
             </ActionIcon>
-            <ActionIcon>
+            <ActionIcon component="a" href="#/experts" size={80}>
                 <Users size={48} color={'#F7C978'}/>
             </ActionIcon>
-            <ActionIcon onClick={() => setOpened(true)} size="xl" radius="xl" variant="filled" style={{background: "#37CEBF"}}>
+            <ActionIcon size ={80} onClick={() => setOpened(true)} variant="filled" style={{background: "#37CEBF", borderRadius: "40px"}}>
                 <Plus
                     size={60}
                     strokeWidth={3}
                     color={'white'}
                 />
             </ActionIcon>
-            <ActionIcon>
+            <ActionIcon component="a" href="#/history-tests" size={80}>
                 <History size={48} color={'white'}/>
             </ActionIcon>
-            <ActionIcon>
+            <ActionIcon size={80}>
                 <Settings size={48} color={'white'}/>
             </ActionIcon>
         </Group>
@@ -176,9 +195,9 @@ const Experts = observer(() => {
                 {listExpertsStore.listExperts && listExpertsStore.listExperts.map((experts, index) => {
                     return(
                         <Box
-                            style={{width: "100%", background: "#37CEBF",borderRadius: "10px", marginTop:'3%'}}>
+                            style={{width: "100%", background: "#37CEBF",borderRadius: "10px", marginTop:'3%', marginBottom: '3%'}}>
                             <Grid columns={8}>
-                                <Grid.Col span={2} >
+                                <Grid.Col span={3} >
                                     <Title order={3} style={{
                                         marginLeft: "4%",
                                         fontFamily: 'Inter',
@@ -187,7 +206,7 @@ const Experts = observer(() => {
                                         fontSize: '32px',
                                         lineHeight: '39px',
                                         color: '#FFFFFF',
-                                        paddingTop: "10%",
+                                        paddingTop: "5%",
                                     }}>{experts.surname} {experts.name}</Title>
                                     <Text style={{
                                         marginLeft: "4%",
@@ -197,7 +216,8 @@ const Experts = observer(() => {
                                         fontSize: '20px',
                                         lineHeight: '24px',
                                         color: '#FFFFFF',
-                                        marginBottom: "10%"
+                                        marginTop: "5%",
+                                        marginBottom: "5%"
                                     }}>{experts.email}</Text>
                                 </Grid.Col>
                                 <Grid.Col span={1}>
@@ -211,20 +231,20 @@ const Experts = observer(() => {
                                         marginTop: "37%",
                                     }}>{gender[experts.gender]}</Text>
                                 </Grid.Col>
-                                <Grid.Col span={1} offset={3}>
-                                    <ActionIcon size="60" radius="xs" variant="outline" style={{
+                                <Grid.Col span={1} offset={2}>
+                                    <ActionIcon size="80"variant="outline" style={{
                                         border: '2px solid #FFFFFF',
                                         marginTop: "20%",
                                         borderRadius: '5px'}}>
-                                        <Trash color={'white'} size="60"/>
+                                        <Trash color={'white'} size="80"/>
                                     </ActionIcon>
                                 </Grid.Col>
                                 <Grid.Col span={1} >
-                                    <ActionIcon size="60" radius="xs" variant="outline" style={{
+                                    <ActionIcon size="80" variant="outline" style={{
                                         border: '2px solid #FFFFFF',
                                         marginTop: "20%",
                                         borderRadius: '5px'}}>
-                                        <Pencil color={'white'} size="60"/>
+                                        <Pencil color={'white'} size="80"/>
                                     </ActionIcon>
                                 </Grid.Col>
                             </Grid>

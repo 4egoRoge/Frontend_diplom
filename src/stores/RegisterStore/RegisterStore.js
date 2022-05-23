@@ -11,6 +11,7 @@ export const registerStore = types.model({
             email: email, password: password, name: name, surname: surname, gender: gender
         }).then( response => {
             console.log(response)
+            location.reload()
         })
     }
 }))

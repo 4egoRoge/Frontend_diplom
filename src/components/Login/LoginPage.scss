@@ -1,15 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;900&display=swap');
 
-body {
-  width: 100%;
+input[type=text] {
+  background: #979797;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+input[type=password] {
+  background: #979797;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+div {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+/*body {
+!*  width: 100%;
   height: 100%;
-  background: #3C3C3C;
+  background: #3C3C3C;*!
   img{
-    position: absolute;
+    !*position: absolute;
     width: 179px;
     height: 115.72px;
     left: 841px;
-    top: 220px;
+    top: 220px;*!
   }
   h1 {
     position: absolute;
@@ -39,12 +67,6 @@ body {
     top: 475.72px;
 
     .email-input {
-      position: absolute;
-      width: 700px;
-      height: 60px;
-      left: 0px;
-      top: 0px;
-
       input[type=text] {
         background: #979797;
         border-radius: 5px;
@@ -57,10 +79,6 @@ body {
       }
 
       input[type=text]::placeholder {
-        position: absolute;
-        width: 60px;
-        height: 29px;
-        top: 16px;
 
         font-family: 'Inter';
         font-style: normal;
@@ -75,14 +93,8 @@ body {
     }
 
     .password-input {
-      position: absolute;
-      width: 700px;
-      height: 60px;
-      left: 0px;
-      top: 120px;
 
       input[type=password] {
-        position: absolute;
         background: #979797;
         border-radius: 5px;
         width: 700px;
@@ -94,7 +106,6 @@ body {
       }
 
       input[type=text] {
-        position: absolute;
         background: #979797;
         border-radius: 5px;
         width: 700px;
@@ -149,7 +160,6 @@ body {
       flex-grow: 0;
 
       button {
-        position: absolute;
         width: 700px;
         height: 60px;
         left: 0px;
@@ -168,3 +178,4 @@ body {
     }
   }
 }
+*!*/

@@ -13,7 +13,8 @@ const RootStoreModel = types.model("rootStore",{
     createNewTestStore: createNewTestStore,
     listTestStore: listTestStore,
     listTestResultStore: listTestResultStore,
-    listExpertsStore: listExpertsStore
+    listExpertsStore: listExpertsStore,
+    /*historyTestsStore: historyTestsStore*/
 })
 
 export const RootStore = RootStoreModel.create(
@@ -39,6 +40,10 @@ export const RootStore = RootStoreModel.create(
             status: "",
             listExperts: []
         },
+        /*historyTestsStore: {
+            status: "",
+            historyTests: []
+        },*/
     }
 )
 
