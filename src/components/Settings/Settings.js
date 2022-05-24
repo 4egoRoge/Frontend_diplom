@@ -6,7 +6,7 @@ import {History, Home, Users} from "tabler-icons-react";
 const Settings = observer(() => {
     return (
         <>
-            <Group position="center" spacing="xl" style={{
+            {/*<Group position="center" spacing="xl" style={{
                 marginTop: "2%"
             }}>
                 <ActionIcon component="a" href="#/home" size={80}>
@@ -21,7 +21,7 @@ const Settings = observer(() => {
                 <ActionIcon size={80}>
                     <Settings size={48} color={'white'}/>
                 </ActionIcon>
-            </Group>
+            </Group>*/}
         </>
     )
 }

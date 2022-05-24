@@ -112,7 +112,7 @@ const Home = () => {
                     </Grid.Col>
                     <Grid.Col span={1}>
                         <Box style={{background: "#5BA5FF", borderRadius: '10px', paddingTop: "20%"}}>
-                            <ActionIcon variant="outline" size={120} style={{border: "3px solid #FFFFFF",
+                            <ActionIcon component="a" href="#/settings" variant="outline" size={120} style={{border: "3px solid #FFFFFF",
                                 borderRadius: "5px", marginLeft: "29%",}}>
                                 <Settings color={'white'} size={90}/>
                             </ActionIcon>
