@@ -20,16 +20,16 @@ const HistoryTests = observer(() => {
             <ActionIcon component="a" href="#/experts" size={80}>
                 <Users size={48} color={'white'}/>
             </ActionIcon>
-            <ActionIcon size={80}>
+            <ActionIcon component="a" href="#/history-tests" size={80}>
                 <History size={80} color={'#F7C978'}/>
             </ActionIcon>
-            <ActionIcon size={80}>
+            <ActionIcon component="a" href="#/settings" size={80}>
                 <Settings size={48} color={'white'}/>
             </ActionIcon>
         </Group>
             <Box style={{
-                position: "absolute", width: "63%",/* background: "red",*/ height: "100px",
-                marginLeft: "19%"}}>
+                position: "absolute", width: "75%",
+                marginLeft: "13%"}}>
     <Collapse in={close}
         style={{width: "100%", background: "#37CEBF",borderRadius: "10px", marginTop:'3%'/*, marginBottom: '3%'*/}}>
         <Grid columns={8}>
@@ -64,7 +64,7 @@ const HistoryTests = observer(() => {
                     fontSize: '20px',
                     lineHeight: '24px',
                     color: '#FFFFFF',
-                    marginTop: "5%",
+                    marginTop: "0%",
                     marginBottom: "5%"
                 }}>Иванов Иван</Text>
             </Grid.Col>
@@ -81,7 +81,7 @@ const HistoryTests = observer(() => {
             </Grid.Col>
             <Grid.Col span={1} offset={3}>
                 <ActionIcon onClick={() => setOpen((o) => !o)} variant="outline" size={90} style={{border: "3px solid #FFFFFF",
-                    borderRadius: "5px", marginLeft: "20%", marginTop: "40%"}}>
+                    borderRadius: "5px", marginLeft: "5%", marginTop: "40%"}}>
                     <ArrowsDiagonalMinimize color={'white'} size={70}/>
                 </ActionIcon>
             </Grid.Col>

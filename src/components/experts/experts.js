@@ -10,7 +10,7 @@ import {
     TextInput,
     PasswordInput,
     RadioGroup,
-    Radio, Button
+    Radio, Button, MediaQuery
 } from "@mantine/core";
 import {Adjustments, History, Home, Pencil, Plus, Settings, Trash, Users} from "tabler-icons-react";
 import {observer} from "mobx-react-lite";
@@ -18,6 +18,7 @@ import {UseMST} from "storePath/RootStore";
 import {z} from "zod";
 import {useForm, zodResolver} from "@mantine/form";
 import './experts.scss';
+import {useMediaQuery} from "@mantine/hooks";
 
 const Experts = observer(() => {
 
@@ -53,6 +54,8 @@ const Experts = observer(() => {
         let gender = [,'М','Ж'];
 
         const [opened, setOpened] = useState(false);
+
+        const mobile = useMediaQuery('(max-width: 489px)');
 
     return (
         <>
@@ -165,16 +168,75 @@ const Experts = observer(() => {
                     </form>
                 </Box>
             </Modal>
-        <Group position="center" spacing="xl" style={{
+            <MediaQuery
+                query="(max-width: 489px)"
+                styles={{
+                    "&.main": {
+                        display: "flex !important",
+                        flexFlow: "wrap !important",
+                        overflow: "hidden",
+                    },
+                    ".col1": {
+                        order: "1",
+                        marginTop: "205%",
+                        marginLeft: "3% !important",
+                        paddingLeft: '0% !important'
+                    },
+                    ".col2": {
+                        order: 0,
+                        marginTop: "10%",
+                        marginLeft: "0%",
+                    },
+                    ".mobileGroup": {
+                        gap: "0%",
+                    },
+                    ".containerMobile": {
+                        margin: "0",
+                    },
+                    ".mobileWidth": {
+                        width: "98% !important",
+                        marginLeft: "3% !important",
+                    },
+                    ".fiMobile": {
+                        fontSize: "14px !important",
+                        lineHeight: "17px !important",
+                        paddingTop: "15% !important"
+                    },
+                    ".emailMobile": {
+                        fontSize: "14px !important",
+                        lineHeight: "17px !important",
+                    },
+                    ".genderMobile": {
+                        fontSize: "12px !important",
+                        lineHeight: "15px !important",
+                        paddingTop: "29% !important",
+                        marginLeft: "0% !important"
+                    },
+                    ".editMobile": {
+                        visibility: "hidden"
+                    },
+                    ".deleteMobile": {
+                        svg: {
+                            width: "48px !important",
+                            height: "48px !important"
+                        }
+                    },
+                    ".lastColMobile": {
+                        padding: '0'
+                    }
+                }}>
+                <div className='main'>
+                    <div className="col1">
+        <Group className="mobileGroup" position={mobile ? "apart" : 'center'} spacing={mobile ? "xs" : 'xl'} style={{
             marginTop: "2%"
         }}>
-            <ActionIcon component="a" href="#/home" size={80}>
+            <ActionIcon className="mobileIcon" component="a" href="#/home" size={80}>
                 <Home size={48} color={'white'}/>
             </ActionIcon>
-            <ActionIcon component="a" href="#/experts" size={80}>
+            <ActionIcon className="usersIcon" component="a" href="#/experts" size={80}>
                 <Users size={48} color={'#F7C978'}/>
             </ActionIcon>
-            <ActionIcon size ={80} onClick={() => setOpened(true)} variant="filled" style={{background: "#37CEBF", borderRadius: "40px"}}>
+            <ActionIcon size={80} onClick={() => setOpened(true)} variant="filled" style={{background: "#37CEBF", borderRadius: "40px"}}>
                 <Plus
                     size={60}
                     strokeWidth={3}
@@ -184,21 +246,24 @@ const Experts = observer(() => {
             <ActionIcon component="a" href="#/history-tests" size={80}>
                 <History size={48} color={'white'}/>
             </ActionIcon>
-            <ActionIcon size={80}>
+            <ActionIcon component="a" href="#/settings" size={80}>
                 <Settings size={48} color={'white'}/>
             </ActionIcon>
         </Group>
-            <Box style={{
-                position: "absolute", width: "63%",/* background: "red",*/ height: "100px",
+                    </div>
+                    <div className="col2">
+            <Box className="mobileWidth"
+                style={{
+                position: "absolute", width: "63%",
                 marginLeft: "19%"}}>
             <div>
                 {listExpertsStore.listExperts && listExpertsStore.listExperts.map((experts, index) => {
                     return(
                         <Box
                             style={{width: "100%", background: "#37CEBF",borderRadius: "10px", marginTop:'3%', marginBottom: '3%'}}>
-                            <Grid columns={8}>
-                                <Grid.Col span={3} >
-                                    <Title order={3} style={{
+                            <Grid className="containerMobile" columns={8}>
+                                <Grid.Col className="colMobile" span={3} >
+                                    <Text className="fiMobile" style={{
                                         marginLeft: "4%",
                                         fontFamily: 'Inter',
                                         fontStyle: 'normal',
@@ -207,8 +272,8 @@ const Experts = observer(() => {
                                         lineHeight: '39px',
                                         color: '#FFFFFF',
                                         paddingTop: "5%",
-                                    }}>{experts.surname} {experts.name}</Title>
-                                    <Text style={{
+                                    }}>{experts.surname} {experts.name}</Text>
+                                    <Text className="emailMobile" style={{
                                         marginLeft: "4%",
                                         fontFamily: 'Inter',
                                         fontStyle: 'normal',
@@ -220,8 +285,8 @@ const Experts = observer(() => {
                                         marginBottom: "5%"
                                     }}>{experts.email}</Text>
                                 </Grid.Col>
-                                <Grid.Col span={1}>
-                                    <Text style={{
+                                <Grid.Col className="colMobile" span={1}>
+                                    <Text className="genderMobile" style={{
                                         fontFamily: 'Inter',
                                         fontStyle: 'normal',
                                         fontWeight: '500',
@@ -231,16 +296,17 @@ const Experts = observer(() => {
                                         marginTop: "37%",
                                     }}>{gender[experts.gender]}</Text>
                                 </Grid.Col>
-                                <Grid.Col span={1} offset={2}>
-                                    <ActionIcon size="80"variant="outline" style={{
+                                <Grid.Col className="colMobile" span={1} offset={2}>
+                                    <ActionIcon className="deleteMobile" size="80"variant="outline" style={{
                                         border: '2px solid #FFFFFF',
                                         marginTop: "20%",
-                                        borderRadius: '5px'}}>
+                                        borderRadius: '5px'}}
+                                    >
                                         <Trash color={'white'} size="80"/>
                                     </ActionIcon>
                                 </Grid.Col>
-                                <Grid.Col span={1} >
-                                    <ActionIcon size="80" variant="outline" style={{
+                                <Grid.Col className="lastColMobile" span={1} >
+                                    <ActionIcon className='editMobile' size="80" variant="outline" style={{
                                         border: '2px solid #FFFFFF',
                                         marginTop: "20%",
                                         borderRadius: '5px'}}>
@@ -252,6 +318,9 @@ const Experts = observer(() => {
                     );})}
             </div>
             </Box>
+                    </div>
+                </div>
+            </MediaQuery>
         </>
     )
 }

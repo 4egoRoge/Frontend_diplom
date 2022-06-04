@@ -11,6 +11,7 @@ import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core
 import Experts from "./experts/experts";
 import HistoryTests from "./HistoryTests/HistoryTests";
 import Settings from "./Settings/Settings";
+import SettingsAccount from "./Settings/Settings";
 
 const App = () => {
     const history = createHashHistory();
@@ -35,17 +36,26 @@ const App = () => {
                 withGlobalStyles
                 withNormalizeCSS*/
             >
-                <ModalsProvider>
+                <ModalsProvider
+                    /*theme={{
+                        breakpoints: {
+                            xs: 500,
+                            sm: 800,
+                            md: 1000,
+                            lg: 1275,
+                            xl: 1800,
+                        },
+                    }}*/>
                     <Provider value={RootStore}>
                         <Router history={history}>
                             <Routes>
                                 <Route path="/auth" element={<LoginPage />}/>
-                                <Route path="/admin/*" element={<AdminContainer />}/>
+                                {/*<Route path="/admin/*" element={<AdminContainer />}/>*/}
                                 <Route path="/history-tests" element={<HistoryTests />}/>
                                 <Route path="/room" element={<Room />}/>
                                 <Route path="/home" element={<Home />}/>
                                 <Route path="/experts" element={<Experts />}/>
-                                <Route path="/settings" element={<Settings />}/>
+                                <Route path="/settings" element={<SettingsAccount />}/>
                             </Routes>
                         </Router>
                     </Provider>

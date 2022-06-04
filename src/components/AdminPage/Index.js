@@ -15,9 +15,9 @@ const AdminContainer = () => {
                 <div>
                     <Link to="/admin/account">Настройки аккаунта</Link>
                 </div>
-                {/*<div>
+                <div>
                     <Link to="/admin/create-test">Создать новый тест</Link>
-                </div>*/}
+                </div>
                 <div>
                     <Link to="/admin/list-tests">Список доступных тестов</Link>
                 </div>

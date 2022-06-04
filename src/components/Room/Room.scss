@@ -1,7 +1,5 @@
 html > body {
     background: #3C3C3C;
-    width: 100%;
-    height: 100%;
     .box-room {
       position: absolute;
       width: 80%;
@@ -12,6 +10,16 @@ html > body {
       width: 50%;
       left: 24%;
     }
-
-      }
-      }
+      input::placeholder {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 24px;
+      color: #FFFFFF;
+    }
+  }
+  title {
+    color: black !important;
+  }
+}

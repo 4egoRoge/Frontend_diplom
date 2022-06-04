@@ -2,11 +2,13 @@ import React, {useState, useEffect} from "react";
 import {observer} from "mobx-react-lite";
 import {UseMST} from "storePath/RootStore";
 import {useNavigate} from "react-router-dom";
-import {Box, Button, Group, PasswordInput, TextInput, Title} from "@mantine/core";
+import {Box, Button, Group, PasswordInput, TextInput, Title, MediaQuery, Text} from "@mantine/core";
 import {useForm, zodResolver} from "@mantine/form";
 import { z } from 'zod';
 import './LoginPage.scss';
 import logo from "../../img/logo.png";
+import {CSSObject} from "@mantine/core";
+import { useMediaQuery } from '@mantine/hooks';
 
 const schema = z.object({
     email: z.string().email({ message: 'Не правильный email' }),
@@ -38,29 +40,42 @@ const LoginPage = observer(() => {
         }
     },[authStore.status])
 
+    const mobile = useMediaQuery('(max-width: 489px)');
+
     return (
-        <Box style={{position: "absolute", width: '60%',marginLeft: "20%", marginTop: "10%",marginRight: "20%"}}>
-            <img src={logo} style={{marginLeft: "41%"}}/>
-            <Title align="center" order={1} style={{
-                fontFamily: 'Inter',
-                fontStyle: 'normal',
-                fontWeight: '900',
-                fontSize: '48px',
-                lineHeight: '58px',
-                color: '#FFFFFF',
-                marginTop: "2%",
-                marginBottom: "3%"
-            }}>FutureMission</Title>
-        <form className="form-login" onSubmit={form.onSubmit=(accept)}>
-                <TextInput className="email-input" style={{marginBottom: "3%"}}
-                    size="xl"
+        <MediaQuery
+            query="(max-width: 489px)"
+            styles={{
+                img: {
+                    marginTop: "50% !important",
+                    paddingLeft: '15% !important',
+                },
+                form: {
+                    width: '300px !important',
+                    paddingTop: '15%',
+                    paddingLeft: '7%',
+                    marginLeft: "0% !important"
+                }
+            }}
+        >
+        <Box style={{position: "absolute", width: '90%',marginLeft: "6%", marginTop: "5%",marginRight: "10%",}} >
+            <img src={logo} style={{paddingLeft:'42%'}}/>
+            <Text align="center"
+                  weight="900" style={{color: "white", fontFamily: 'Inter',fontSize: '48px', fontStyle: 'normal',marginTop: "2%", marginBottom: "3%"}}>{mobile ? '' : 'FutureMission'}
+                </Text>
+        <form className="form-login" onSubmit={form.onSubmit=(accept)} style={{width: "60%", marginLeft: '20%'}}>
+                <TextInput style={{marginBottom: "3%"}}
+                    size={mobile ? 'xs' : 'xl'}
+                    pb={mobile ? 'md' : 'xs'}
+                    fw="xs"
                     required
                     name="email"
                     placeholder="Email"
                     {...form.getInputProps('email')}
                 />
             <PasswordInput className="password-input" style={{marginBottom: "3%"}}
-                size="xl"
+                           size={mobile ? 'xs' : 'xl'}
+                           pb={mobile ? 'md' : 'xs'}
                 required
                 placeholder="Пароль"
                 name="password"
@@ -68,7 +83,7 @@ const LoginPage = observer(() => {
             />
             <div className="button-login-form">
             <Group>
-                <Button size='xl' style={{width: "100%", background: '#37CEBF',fontFamily: 'Inter',
+                <Button size={mobile ? 'xs' : 'xl'} style={{width: "100%", background: '#37CEBF',fontFamily: 'Inter',
                     fontStyle: 'normal',
                     fontWeight: '400',
                     fontSize: '24px',
@@ -81,6 +96,7 @@ const LoginPage = observer(() => {
                         </div>
         </form>
         </Box>
+        </MediaQuery>
     );
 }
 )

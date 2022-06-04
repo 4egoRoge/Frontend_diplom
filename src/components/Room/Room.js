@@ -9,11 +9,11 @@ import {
     SimpleGrid,
     Title,
     Group,
-    useMantineColorScheme
+    useMantineColorScheme, Textarea, TextInput, ActionIcon
 } from '@mantine/core';
 import './Room.scss';
 import { useModals } from '@mantine/modals';
-import {Camera, Microphone} from 'tabler-icons-react';
+import {Camera, Microphone, Plus, Send, Settings, PhoneOff} from 'tabler-icons-react';
 import space from "../../img/spaceBackground.png";
 import {useClipboard, useToggle} from "@mantine/hooks";
 
@@ -25,7 +25,8 @@ const Room = () => {
             title: 'Закончить звонок',
             centered: true,
             labels: { confirm: 'Да', cancel: "Нет"},
-            confirmProps: { color: 'rgba(241, 96, 96, 1)'},
+            confirmProps: { color: 'red' },
+            cancelProps: { color: 'blue !important'},
             onCancel: () => console.log('Cancel'),
             onConfirm: () => console.log('Confirmed'),
         });
@@ -38,6 +39,7 @@ const Room = () => {
                <Modal
                    centered
                    size="80%"
+                   id="2"
                    opened={opened}
                    onClose={() => setOpened(false)}
                    title="Настройки"
@@ -158,6 +160,8 @@ const Room = () => {
                         }}/>
                    </Group>
                </Modal>
+               <Modal>
+               </Modal>
                <Button onClick={() => clipboard.copy(invite)}
                    radius="md" style={{
                    backgroundColor: "#37CEBF",
@@ -167,6 +171,8 @@ const Room = () => {
                    fontSize: '20px',
                    lineHeight:'24px',
                    color: '#FFFFFF',
+                   width: '60%',
+                   left: "25%"
                }}
                >
                    {invite}
@@ -174,8 +180,67 @@ const Room = () => {
                <Grid>
                    <Grid.Col span={8}>
                <Box>
-                   <SegmentedControl fullWidth
-                                     data={[
+                   <div style={{background: '#808080'}}>
+                   <Grid columns={10}>
+                       <Grid.Col span={10}>
+                   <Textarea
+                       autosize
+                       minRows={20}
+                       maxRows={20}
+                       style={{
+                           paddingTop: "3%",
+                           border: "0"
+                       }}
+                       styles={{
+                       input: { color: '#FFFFFF' },
+                       defaultVariant: { backgroundColor: '#C4C4C4' },
+                   }}
+                   />
+                       </Grid.Col>
+                       <Grid.Col span={8} offset={0.5}>
+                       <TextInput
+                           placeholder="Введите сообщение"
+                           size="lg"
+                           styles={{
+                               input: { backgroundColor: '#C4C4C4 !important',},
+                           }}
+                       />
+                       </Grid.Col>
+                       <Grid.Col span={1}>
+                           <ActionIcon size={50} style={{paddingLeft: '2% !important'}} variant="filled" style={{background: "#37CEBF"}}>
+                               <Send
+                                   size={40}
+                                   strokeWidth={2}
+                                   color={'white'}
+                               />
+                           </ActionIcon>
+                       </Grid.Col>
+                   </Grid>
+                   </div>
+                   <SegmentedControl
+                       style={{marginTop: "3%", backgroundColor: "#3C3C3C"}}
+                       styles={{label: {
+                               backgroundColor: "#37CEBF",
+                               color: 'white',
+                               fontFamily: 'Inter',
+                               fontStyle: 'normal',
+                               fontWeight: '300',
+                               fontSize: '16px',
+                               lineHeight: '19px',
+                           },
+                           labelActive: {
+                               backgroundColor: "#37CEBF",
+                               color: 'white',
+                               fontFamily: 'Inter',
+                               fontStyle: 'normal',
+                               fontWeight: '300',
+                               fontSize: '16px',
+                               lineHeight: '19px',
+                           }
+                   }}
+                                    fullWidth
+                                    radius='lg'
+                                    data={[
                            { label: 'Таблица', value: '1' },
                            { label: 'Вопрос с вариантами ответов', value: '2' },
                            { label: 'Сетка возможностей', value: '3' },
@@ -186,19 +251,23 @@ const Room = () => {
                    </Grid.Col>
                        <Grid.Col span={4}>
                                <Grid columns={1}>
-                                   <Grid.Col style={{height: "100%"}}>
+                                   <Grid.Col>
                                        <Box
-                                           style={{backgroundColor:"black",
-                                           }}>
+                                           style={{backgroundColor:"black", width: "100%", height: '250px', marginLeft: '24%'}}>
                                        </Box>
                                    </Grid.Col>
                                    <Grid.Col>
-                                       <Button Button onClick={() => setOpened(true)} size="md">
+                                       <Box
+                                           style={{backgroundColor:"black", width: "100%", height: '250px', marginLeft: '24%'}}>
+                                       </Box>
+                                   </Grid.Col>
+                                   <Grid.Col>
+                                       <Button leftIcon={<Settings />} style={{width: '100%'}} onClick={() => setOpened(true)} size="md">
                                             Настройки звонка
                                        </Button>
                                    </Grid.Col>
                                    <Grid.Col>
-                                        <Button onClick={openDeleteModal} color="red" size="md">
+                                        <Button leftIcon={<PhoneOff />} style={{width: '100%'}} onClick={openDeleteModal} color="red" size="md">
                                             Закончить звонок
                                         </Button>
                                    </Grid.Col>

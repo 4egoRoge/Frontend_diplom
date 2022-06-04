@@ -1,0 +1,25 @@
+@media (max-width: 489px) {
+  input[type="text"]::placeholder {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 5px !important;
+  }
+  input[type="text"] {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+    background: #5B5B5B;
+  }
+  input[type="password"]::placeholder {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  input[type="password"] {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+    background: #5B5B5B;
+  }
+}
